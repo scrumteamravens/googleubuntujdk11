@@ -11,16 +11,10 @@ env:
 before_script:
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
   - source /home/travis/google-cloud-sdk/path.bash.inc
-  - gcloud --quiet version
-  - gcloud --quiet components update
   - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > /home/travis/gcloud-service-key.json
-  - echo $GCLOUD_SERVICE_KEY
-  - echo ***********************^^^^^^^^^^^^*********************
-  - echo testtxt=$(</home/travis/gcloud-service-key.json)
-  - echo $testtxt
   - gcloud auth activate-service-account --key-file /home/travis/gcloud-service-key.json
-  - gcloud --quiet config set project $PROJECT_NAME_PRD
   - gcloud auth configure-docker
+  - yum update
   
 script:
   - docker build --tag scrumteamravens/googleubuntujdk11 .
