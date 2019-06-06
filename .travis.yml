@@ -1,0 +1,26 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - REGISTRY_USER=scrumteamravens
+      REGISTRY_PASS=team@12345
+    #- secret: "<something long>"
+
+script:
+  - docker build --tag scrumteamravens/googleubuntujdk11 .
+  - docker run scrumteamravens/googleubuntujdk11
+
+after_script:
+  - docker images
+  
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  
+deploy:
+  provider: script
+  script: docker push scrumteamravens/googleubuntujdk11
+  on:
+    branch: master
