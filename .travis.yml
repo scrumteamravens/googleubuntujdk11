@@ -1,5 +1,5 @@
 sudo: required
-
+dist: xenial
 services:
   - docker
 
@@ -14,7 +14,6 @@ before_script:
   - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > /home/travis/gcloud-service-key.json
   - gcloud auth activate-service-account --key-file /home/travis/gcloud-service-key.json
   - gcloud auth configure-docker
-  - yum update
   
 script:
   - docker build --tag scrumteamravens/googleubuntujdk11 .
