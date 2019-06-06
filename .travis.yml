@@ -24,7 +24,8 @@ before_deploy:
   - gcloud --quiet components beta update
   - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > ${HOME}/gcloud-service-key.json
   - gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-
+  - gcloud --quiet config set project $PROJECT_NAME_PRD
+  - gcloud --quiet config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
   
 deploy:
   provider: script
