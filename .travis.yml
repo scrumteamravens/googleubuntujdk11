@@ -6,8 +6,7 @@ services:
 env:
   global:
     - REGISTRY_USER=scrumteamravens
-      REGISTRY_PASS=$REGISTRY_PASS
-    #- secret: "<something long>"
+    - REGISTRY_PASS=$REGISTRY_PASS
 
 script:
   - docker build --tag scrumteamravens/googleubuntujdk11 .
@@ -18,7 +17,14 @@ after_script:
   
 before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-  
+  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+  - source /home/travis/google-cloud-sdk/path.bash.inc
+  - gcloud --quiet version
+  - gcloud --quiet components update
+  - gcloud --quiet components beta update
+  - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > ${HOME}/gcloud-service-key.json
+  - gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+
   
 deploy:
   provider: script
