@@ -12,3 +12,5 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH"
+
+
