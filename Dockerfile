@@ -1,6 +1,7 @@
 FROM adoptopenjdk/openjdk11:jre AS builder
 
-FROM marketplace.gcr.io/google/ubuntu1804
+#FROM marketplace.gcr.io/google/ubuntu1804
+FROM ubuntu:18.04
 
 COPY --from=builder ./opt/java/openjdk ./opt/java/openjdk
 
