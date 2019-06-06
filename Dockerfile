@@ -7,6 +7,7 @@ COPY --from=builder ./opt/java/openjdk ./opt/java/openjdk
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' 
 #LC_ALL='en_US.UTF-8'
 
+RUN apt-get update
 RUN apt-get install unzip -y
 
 ENV JAVA_HOME=/opt/java/openjdk \
