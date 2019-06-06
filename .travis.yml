@@ -37,3 +37,5 @@ deploy:
   script: docker push scrumteamravens/googleubuntujdk11
   on:
     branch: master
+    
+    
