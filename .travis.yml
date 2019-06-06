@@ -15,7 +15,7 @@ before_script:
   - gcloud --quiet components update
   - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > /home/travis/gcloud-service-key.json
   - echo $GCLOUD_SERVICE_KEY
-  - echo ***********************^^^^^^^^^^^^&&&&&&&&&&&&&&&&&&&&&&&
+  - echo ***********************^^^^^^^^^^^^*********************
   - echo testtxt=$(</home/travis/gcloud-service-key.json)
   - echo $testtxt
   - gcloud auth activate-service-account --key-file /home/travis/gcloud-service-key.json
