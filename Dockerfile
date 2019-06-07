@@ -5,9 +5,6 @@ FROM marketplace.gcr.io/google/ubuntu1804
 COPY --from=builder ./opt/java/openjdk ./opt/java/openjdk
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' 
-#LC_ALL='en_US.UTF-8'
-
-RUN apt-get install -y unzip
 
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH"
