@@ -12,4 +12,4 @@ commandTests:
   - name: "python installation"
     command: "which"
     args: ["python"]
-    expectedOutput: ["/usr/bin/python\n"]
+    expectedOutput: ["/usrs/bins/pythons\n"]
