@@ -1,4 +1,4 @@
 #!/bin/bash
 
-structure-test -test.v -image gcr.io/google-appengine/python \
+structure-test -test.v -image scrumteamravens/googleubuntujdk11 \
 command_tests.yaml
