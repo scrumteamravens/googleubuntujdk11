@@ -25,7 +25,8 @@ script:
 
 after_script:
   - docker images
-  
+  - ./setup.sh
+  - ./run.sh
 before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
   
