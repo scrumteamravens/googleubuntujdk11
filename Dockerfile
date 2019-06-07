@@ -9,5 +9,4 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH"
 
-# "jshell" is an interactive REPL for Java (see https://en.wikipedia.org/wiki/JShell)
-CMD ["jshell"]
+CMD ["/bin/bash"]
